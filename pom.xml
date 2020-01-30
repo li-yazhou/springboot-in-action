@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!--
+		父工程的父工程：用来管理SpringBoot应用中依赖的版本，进行版本控制
+
+		Spring Boot父级依赖:spring-boot-starter-parent
+		有了这个Spring Boot父级依赖，就表示当前项目就是Spring Boot项目了，
+		spring-boot-starter-parent是一个特殊的starter,它用来提供相关的Maven默认依赖，
+		使用它之后，常用的包依赖可以省去version标签。关于Spring Boot提供了哪些jar包的依赖，
+		可查看本地maven仓库，xxx\repository\org\springframework\boot\spring-boot-dependencies\1.5.4.RELEASE\spring-boot-dependencies-1.5.1.RELEASE.pom，
+		当然如果SpringBoot提供的依赖版本不是你需要的，可以声明其他版本的依赖覆盖掉。
+	-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>org.alpha</groupId>
+	<artifactId>springboot-in-action</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springboot-in-action</name>
+	<description>Spring Boot Learning</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+
+		<!--
+			依赖：通过starter指定依赖
+
+			起步依赖 spring-boot-starter-web
+			Spring Boot提供了很多”开箱即用“的依赖模块，都是以spring-boot-starter-xx作为命名的。
+			这个开箱即用，体现了SpringBoot的方便之处，举个栗子：之前在用SpringMVC的时候，需要做很多的配置和引入各种需要的依赖，
+			当依赖版本不匹配的时候，会出现各种莫名其妙的问题；而使用spring-boot-starter起步模块开箱即用，自动封装所需功能的依赖
+
+			SpringBoot提供了很多starter(启动器)，分别对应了不同的应用场景，当在项目中引入这些starter时，相应场景的依赖就会被导入进来
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!--该插件可以将应用打包成一个可执行的jar包-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

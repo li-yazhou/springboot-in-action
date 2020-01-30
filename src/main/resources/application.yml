@@ -1,0 +1,13 @@
+user:
+  username: admin
+  age: 21
+  status: true
+  birthday: 2020/01/01
+  address:
+    province: 北京市
+    city: 海淀区
+  lists:
+  - list1
+  - list2
+  - list3
+  maps: {k1: v1,k2: v2}
